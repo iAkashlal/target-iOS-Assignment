@@ -21,6 +21,9 @@
 		F857CC202C95AD8B00BAB8C1 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC1F2C95AD8B00BAB8C1 /* Coordinator.swift */; };
 		F857CC222C95B09A00BAB8C1 /* ProductsDiscoveryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC212C95B09A00BAB8C1 /* ProductsDiscoveryCoordinator.swift */; };
 		F857CC252C95B39400BAB8C1 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC242C95B39400BAB8C1 /* ProductDetailViewController.swift */; };
+		F857CC272C95B7F400BAB8C1 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC262C95B7F400BAB8C1 /* Logger.swift */; };
+		F857CC292C95B82A00BAB8C1 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC282C95B82A00BAB8C1 /* NetworkRequest.swift */; };
+		F857CC2B2C95B86400BAB8C1 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC2A2C95B86400BAB8C1 /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		F857CC1F2C95AD8B00BAB8C1 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		F857CC212C95B09A00BAB8C1 /* ProductsDiscoveryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsDiscoveryCoordinator.swift; sourceTree = "<group>"; };
 		F857CC242C95B39400BAB8C1 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
+		F857CC262C95B7F400BAB8C1 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		F857CC282C95B82A00BAB8C1 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		F857CC2A2C95B86400BAB8C1 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +141,7 @@
 				F857CC1D2C95AD6000BAB8C1 /* Extensions */,
 				F857CC1C2C95AD5800BAB8C1 /* Protocols */,
 				F857CC152C95AB5F00BAB8C1 /* Assets */,
+				F857CC262C95B7F400BAB8C1 /* Logger.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -184,6 +191,8 @@
 		F857CC1B2C95AD2E00BAB8C1 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				F857CC282C95B82A00BAB8C1 /* NetworkRequest.swift */,
+				F857CC2A2C95B86400BAB8C1 /* NetworkService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -316,13 +325,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F857CC292C95B82A00BAB8C1 /* NetworkRequest.swift in Sources */,
 				5B259CCA1D6630E0001D755F /* AppDelegate.swift in Sources */,
 				96D6F5FD280F47B0009338BF /* UIColor+Helpers.swift in Sources */,
 				96D6F5F6280EE0C0009338BF /* Autolayout.swift in Sources */,
 				5BEF081F1D663598006BF0C0 /* StandaloneListItemViewCell.swift in Sources */,
 				96F0032A27BC262C00D1818F /* DataSource.swift in Sources */,
+				F857CC2B2C95B86400BAB8C1 /* NetworkService.swift in Sources */,
 				F857CC1A2C95AC8700BAB8C1 /* AppFlowStarter.swift in Sources */,
 				96D6F5FE280F47B0009338BF /* UIFont+Helpers.swift in Sources */,
+				F857CC272C95B7F400BAB8C1 /* Logger.swift in Sources */,
 				F857CC252C95B39400BAB8C1 /* ProductDetailViewController.swift in Sources */,
 				5BEF08141D663304006BF0C0 /* StandaloneListViewController.swift in Sources */,
 				F857CC202C95AD8B00BAB8C1 /* Coordinator.swift in Sources */,
