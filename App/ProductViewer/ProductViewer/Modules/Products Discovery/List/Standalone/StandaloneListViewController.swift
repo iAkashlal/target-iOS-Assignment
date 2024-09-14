@@ -76,6 +76,9 @@ final class StandaloneListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        vm = DealsVM(coordinator: nil)
+        vm.fetchAllDeals()
+        
         view.addSubview(collectionView)
 
         collectionView.contentInset = UIEdgeInsets(

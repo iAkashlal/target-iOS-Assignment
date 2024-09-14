@@ -40,14 +40,22 @@ extension NetworkRequest {
     
     var request: URLRequest? {
         guard let url = url else {
-            assertionFailure()
+            Logger.sharedInstance.log(
+                key: UUID().uuidString,
+                message: "Failed to create URL, check TargetAPI setup \(#file) \(#line)",
+                logLevel: .error
+            )
             return nil
         }
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod.rawValue
         request.httpBody = body
         request.allHTTPHeaderFields = headers
-        print(request)
+        Logger.sharedInstance.log(
+            key: UUID().uuidString,
+            message: "URL Request created - \(request)",
+            logLevel: .info
+        )
         return request
     }
 }

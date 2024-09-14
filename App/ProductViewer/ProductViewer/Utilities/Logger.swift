@@ -29,8 +29,8 @@ final class Logger {
             let timestamp = DateFormatter.localizedString(from: Date(),
                                                           dateStyle: .short, timeStyle: .long)
             logEvents[key] = message
-            print("\(timestamp) \(logLevel.rawValue) \(message)")
-        })
+            debugPrint("\(timestamp) \(logLevel.rawValue) \(message)")
+        }
     }
     func readValue(key: String) -> String? {
         var value: String?

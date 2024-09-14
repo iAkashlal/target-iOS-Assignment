@@ -22,9 +22,10 @@ final class DealsVM {
         
         Task {
             do {
-                let adsf = try await service.fetch(request: TargetAPI.deals.request!)
-                print(adsf)
+                let deals = try await service.fetch(request: TargetAPI.deals.request!)
+                Logger.sharedInstance.log(key: UUID().uuidString, message: "Deals loaded", logLevel: .info)
             } catch let error {
+                Logger.sharedInstance.log(key: UUID().uuidString, message: error.localizedDescription, logLevel: .error)
                 print(error.localizedDescription.description)
             }
         }
