@@ -15,9 +15,16 @@ protocol NetworkServiceable {
 }
 
 class NetworkService<T: Decodable>: NetworkServiceable {
+    
+    let decoder = JSONDecoder()
+    
+    init() {
+        self.decoder.keyDecodingStrategy = .convertFromSnakeCase
+    }
+    
     func fetch(request: URLRequest) async throws -> T {
         let (data, response) = try await URLSession.shared.data(for: request)
-        let object = try JSONDecoder().decode(T.self, from: data)
+        let object = try decoder.decode(T.self, from: data)
         return object
     }
     

@@ -5,6 +5,9 @@
 import UIKit
 
 final class StandaloneListViewController: UIViewController {
+    
+    var vm: DealsVM!
+    
     private lazy var layout: UICollectionViewLayout = {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),

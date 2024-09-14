@@ -31,7 +31,7 @@ extension NetworkRequest {
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
-        urlComponents.path = path
+        urlComponents.path = version + path
         urlComponents.queryItems = queryParameters.compactMap({ key, value in
             return URLQueryItem(name: key, value: value)
         })

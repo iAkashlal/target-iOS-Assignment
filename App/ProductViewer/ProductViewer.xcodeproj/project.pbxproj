@@ -24,6 +24,13 @@
 		F857CC272C95B7F400BAB8C1 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC262C95B7F400BAB8C1 /* Logger.swift */; };
 		F857CC292C95B82A00BAB8C1 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC282C95B82A00BAB8C1 /* NetworkRequest.swift */; };
 		F857CC2B2C95B86400BAB8C1 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC2A2C95B86400BAB8C1 /* NetworkService.swift */; };
+		F857CC2D2C95BDAE00BAB8C1 /* TargetAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC2C2C95BDAE00BAB8C1 /* TargetAPI.swift */; };
+		F857CC2F2C95C1E900BAB8C1 /* DealsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC2E2C95C1E900BAB8C1 /* DealsResponse.swift */; };
+		F857CC312C95C4A500BAB8C1 /* DealsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC302C95C4A500BAB8C1 /* DealsService.swift */; };
+		F857CC332C95C4D900BAB8C1 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC322C95C4D900BAB8C1 /* Product.swift */; };
+		F857CC352C95C4EA00BAB8C1 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC342C95C4EA00BAB8C1 /* Price.swift */; };
+		F857CC372C95C50100BAB8C1 /* ItemNotFoundResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC362C95C50100BAB8C1 /* ItemNotFoundResponse.swift */; };
+		F857CC392C95C52100BAB8C1 /* DealsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC382C95C52100BAB8C1 /* DealsVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +64,13 @@
 		F857CC262C95B7F400BAB8C1 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		F857CC282C95B82A00BAB8C1 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		F857CC2A2C95B86400BAB8C1 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		F857CC2C2C95BDAE00BAB8C1 /* TargetAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetAPI.swift; sourceTree = "<group>"; };
+		F857CC2E2C95C1E900BAB8C1 /* DealsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsResponse.swift; sourceTree = "<group>"; };
+		F857CC302C95C4A500BAB8C1 /* DealsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsService.swift; sourceTree = "<group>"; };
+		F857CC322C95C4D900BAB8C1 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		F857CC342C95C4EA00BAB8C1 /* Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
+		F857CC362C95C50100BAB8C1 /* ItemNotFoundResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNotFoundResponse.swift; sourceTree = "<group>"; };
+		F857CC382C95C52100BAB8C1 /* DealsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +128,7 @@
 			children = (
 				965B6A6A283F57DC0080E9B4 /* Standalone */,
 				96F0032927BC262C00D1818F /* DataSource.swift */,
+				F857CC382C95C52100BAB8C1 /* DealsVM.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -166,6 +181,10 @@
 		F857CC162C95AB6C00BAB8C1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F857CC2E2C95C1E900BAB8C1 /* DealsResponse.swift */,
+				F857CC362C95C50100BAB8C1 /* ItemNotFoundResponse.swift */,
+				F857CC342C95C4EA00BAB8C1 /* Price.swift */,
+				F857CC322C95C4D900BAB8C1 /* Product.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -192,7 +211,9 @@
 			isa = PBXGroup;
 			children = (
 				F857CC282C95B82A00BAB8C1 /* NetworkRequest.swift */,
+				F857CC2C2C95BDAE00BAB8C1 /* TargetAPI.swift */,
 				F857CC2A2C95B86400BAB8C1 /* NetworkService.swift */,
+				F857CC302C95C4A500BAB8C1 /* DealsService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -325,20 +346,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F857CC352C95C4EA00BAB8C1 /* Price.swift in Sources */,
+				F857CC312C95C4A500BAB8C1 /* DealsService.swift in Sources */,
 				F857CC292C95B82A00BAB8C1 /* NetworkRequest.swift in Sources */,
+				F857CC332C95C4D900BAB8C1 /* Product.swift in Sources */,
 				5B259CCA1D6630E0001D755F /* AppDelegate.swift in Sources */,
 				96D6F5FD280F47B0009338BF /* UIColor+Helpers.swift in Sources */,
 				96D6F5F6280EE0C0009338BF /* Autolayout.swift in Sources */,
 				5BEF081F1D663598006BF0C0 /* StandaloneListItemViewCell.swift in Sources */,
 				96F0032A27BC262C00D1818F /* DataSource.swift in Sources */,
+				F857CC392C95C52100BAB8C1 /* DealsVM.swift in Sources */,
+				F857CC2F2C95C1E900BAB8C1 /* DealsResponse.swift in Sources */,
 				F857CC2B2C95B86400BAB8C1 /* NetworkService.swift in Sources */,
 				F857CC1A2C95AC8700BAB8C1 /* AppFlowStarter.swift in Sources */,
 				96D6F5FE280F47B0009338BF /* UIFont+Helpers.swift in Sources */,
 				F857CC272C95B7F400BAB8C1 /* Logger.swift in Sources */,
 				F857CC252C95B39400BAB8C1 /* ProductDetailViewController.swift in Sources */,
 				5BEF08141D663304006BF0C0 /* StandaloneListViewController.swift in Sources */,
+				F857CC372C95C50100BAB8C1 /* ItemNotFoundResponse.swift in Sources */,
 				F857CC202C95AD8B00BAB8C1 /* Coordinator.swift in Sources */,
 				F857CC222C95B09A00BAB8C1 /* ProductsDiscoveryCoordinator.swift in Sources */,
+				F857CC2D2C95BDAE00BAB8C1 /* TargetAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
