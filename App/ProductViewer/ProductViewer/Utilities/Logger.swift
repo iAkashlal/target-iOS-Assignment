@@ -7,7 +7,6 @@
 //
 
 import Foundation
-
 enum LogLevel : String {
     case debug = "Debug"
     case info = "Info"
@@ -30,7 +29,7 @@ final class Logger {
                                                           dateStyle: .short, timeStyle: .long)
             logEvents[key] = message
             debugPrint("\(timestamp) \(logLevel.rawValue) \(message)")
-        }
+        })
     }
     func readValue(key: String) -> String? {
         var value: String?

@@ -25,7 +25,11 @@ final class DealsVM {
                 let deals = try await service.fetch(request: TargetAPI.deals.request!)
                 Logger.sharedInstance.log(key: UUID().uuidString, message: "Deals loaded", logLevel: .info)
             } catch let error {
-                Logger.sharedInstance.log(key: UUID().uuidString, message: error.localizedDescription, logLevel: .error)
+                Logger.sharedInstance.log(
+                    key: UUID().uuidString,
+                    message: error.localizedDescription + "[\(#file.components(separatedBy: "/").last ?? "") - Line \(#line)]",
+                    logLevel: .error
+                )
                 print(error.localizedDescription.description)
             }
         }
