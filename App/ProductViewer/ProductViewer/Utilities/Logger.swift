@@ -23,7 +23,7 @@ final class Logger {
                                                 attributes: .concurrent)
     private var logEvents: [String: Any] = [:]
     
-    func log(key: String, message: String, logLevel : LogLevel = .info) {
+    func log(key: String = UUID().uuidString, message: String, logLevel : LogLevel = .info) {
         concurrentQueue.asyncAndWait(flags: .barrier, execute: {
             let timestamp = DateFormatter.localizedString(from: Date(),
                                                           dateStyle: .short, timeStyle: .long)

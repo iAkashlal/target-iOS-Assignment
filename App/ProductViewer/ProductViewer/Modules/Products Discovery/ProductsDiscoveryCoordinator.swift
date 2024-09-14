@@ -21,8 +21,10 @@ class ProductsDiscoveryCoordinator: Coordinator {
         }
     
     func start() {
+        let dealsVM = DealsVM(coordinator: self)
+        dealsVM.fetchAllDeals()
         
-        var productsListView = StandaloneListViewController()
+        let productsListView = StandaloneListViewController()
         
         if let navigationController = navigationController {
             navigationController.setViewControllers(
@@ -31,6 +33,21 @@ class ProductsDiscoveryCoordinator: Coordinator {
             )
         }
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.showProduct(with: 2)
+        }
+        
+    }
+    
+    func showProduct(with id: Int) {
+        let productDescriptionVM = ProductDetailVM(coordinator: self)
+        productDescriptionVM.fetchDescriptionforProduct(with: id)
+        
+        let productDetailVC = ProductDetailVC()
+        
+        if let navigationController = navigationController {
+            navigationController.pushViewController(productDetailVC, animated: true)
+        }
     }
     
     

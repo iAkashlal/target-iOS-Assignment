@@ -1,5 +1,5 @@
 //
-//  DealsVM.swift
+//  ProductDescriptionVM.swift
 //  ProductViewer
 //
 //  Created by Akashlal Bathe on 14/09/24.
@@ -8,17 +8,19 @@
 
 import Foundation
 
-final class DealsVM {
+final class ProductDetailVM {
     
     var coordinator: Coordinator?
     var service: (any NetworkServiceable)?
     
-    init(coordinator: Coordinator?, service: (any NetworkServiceable) = DealsService()) {
+    private(set) var product: Product?
+    
+    init(coordinator: Coordinator?, service: (any NetworkServiceable) = ProductDetailService()) {
         self.coordinator = coordinator
         self.service = service
     }
     
-    func fetchAllDeals() {
+    func fetchDescriptionforProduct(with id: Int) {
         guard let service else {
             Logger.sharedInstance.log(
                 message: "Service not initialized [\(#file.components(separatedBy: "/").last ?? "") - Line \(#line)]",
@@ -27,7 +29,7 @@ final class DealsVM {
             return
         }
         
-        guard let request = TargetAPI.deals.request else {
+        guard let request = TargetAPI.productDetail(id: id).request else {
             Logger.sharedInstance.log(
                 message: "URLRequest not available [\(#file.components(separatedBy: "/").last ?? "") - Line \(#line)]",
                 logLevel: .error
@@ -37,19 +39,17 @@ final class DealsVM {
         
         Task {
             do {
-                let deals = try await service.fetch(request: request)
-                Logger.sharedInstance.log(key: UUID().uuidString, message: "Deals loaded", logLevel: .info)
+                let product = try await service.fetch(request: request)
+                Logger.sharedInstance.log(key: UUID().uuidString, message: "Product \(id) loaded", logLevel: .info)
             } catch let error {
                 Logger.sharedInstance.log(
                     key: UUID().uuidString,
                     message: error.localizedDescription + "[\(#file.components(separatedBy: "/").last ?? "") - Line \(#line)]",
                     logLevel: .error
                 )
-                print(error.localizedDescription.description)
             }
         }
-        
-        
     }
+    
     
 }

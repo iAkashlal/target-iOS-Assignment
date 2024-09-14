@@ -27,7 +27,7 @@ protocol NetworkRequest {
 
 extension NetworkRequest {
     
-    var url: URL? {
+    private var url: URL? {
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
