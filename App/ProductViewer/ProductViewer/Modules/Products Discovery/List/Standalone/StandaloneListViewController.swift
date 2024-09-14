@@ -5,6 +5,9 @@
 import UIKit
 
 final class StandaloneListViewController: UIViewController {
+    
+    var vm: DealsVM!
+    
     private lazy var layout: UICollectionViewLayout = {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
@@ -72,6 +75,9 @@ final class StandaloneListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        vm = DealsVM(coordinator: nil)
+        vm.fetchAllDeals()
         
         view.addSubview(collectionView)
 
