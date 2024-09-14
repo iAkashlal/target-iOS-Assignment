@@ -33,10 +33,6 @@ class ProductsDiscoveryCoordinator: Coordinator {
             )
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.showProduct(with: 2)
-        }
-        
     }
     
     func showProduct(with id: Int) {
@@ -48,6 +44,7 @@ class ProductsDiscoveryCoordinator: Coordinator {
         if let navigationController = navigationController {
             navigationController.pushViewController(productDetailVC, animated: true)
         }
+        
     }
     
     
