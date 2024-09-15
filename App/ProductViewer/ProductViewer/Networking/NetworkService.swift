@@ -22,10 +22,10 @@ class NetworkService<T: Decodable>: NetworkServiceable {
         self.decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
     
-    func fetch(request: URLRequest) async throws -> T {
+    func fetch(request: URLRequest) async throws -> (T, URLResponse) {
         let (data, response) = try await URLSession.shared.data(for: request)
         let object = try decoder.decode(T.self, from: data)
-        return object
+        return (object, response)
     }
     
     

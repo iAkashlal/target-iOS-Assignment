@@ -21,14 +21,28 @@ class ProductsDiscoveryCoordinator: Coordinator {
         }
     
     func start() {
+        let dealsVM = DealsVM(coordinator: self)
+        dealsVM.fetchAllDeals()
         
-        var productsListView = StandaloneListViewController()
+        let productsListView = StandaloneListViewController()
         
         if let navigationController = navigationController {
             navigationController.setViewControllers(
                 [productsListView],
                 animated: true
             )
+        }
+        
+    }
+    
+    func showProduct(with id: Int) {
+        let productDescriptionVM = ProductDetailVM(coordinator: self)
+        productDescriptionVM.fetchDescriptionforProduct(with: id)
+        
+        let productDetailVC = ProductDetailVC()
+        
+        if let navigationController = navigationController {
+            navigationController.pushViewController(productDetailVC, animated: true)
         }
         
     }

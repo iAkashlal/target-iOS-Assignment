@@ -6,4 +6,8 @@
 //  Copyright © 2024 Target. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+final class ProductDetailVC: UIViewController {
+    
+}
