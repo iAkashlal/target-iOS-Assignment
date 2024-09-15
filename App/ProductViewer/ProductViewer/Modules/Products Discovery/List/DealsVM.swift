@@ -84,6 +84,7 @@ extension DealsVM {
 }
 
 extension DealsVM {
+    @MainActor 
     func showDetailsForProduct(at index: Int) {
         let product = getProduct(at: index)
         guard let product = getProduct(at: index),

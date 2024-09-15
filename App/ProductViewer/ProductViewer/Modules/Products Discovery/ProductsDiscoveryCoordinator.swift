@@ -6,8 +6,10 @@
 //  Copyright © 2024 Target. All rights reserved.
 //
 
+import SwiftUI
 import UIKit
 
+@MainActor
 class ProductsDiscoveryCoordinator: Coordinator {
     var childCoordinators: [any Coordinator]
     
@@ -37,13 +39,14 @@ class ProductsDiscoveryCoordinator: Coordinator {
     }
     
     func showDetails(for product: Product) {
-        let productDescriptionVM = ProductDetailVM(coordinator: self)
-        productDescriptionVM.fetchDescriptionforProduct(with: product.id)
+        let productDescriptionVM = ProductDetailVM(coordinator: self, product: product)
+        productDescriptionVM.fetchDescriptionforProduct(with: product)
         
-        let productDetailVC = ProductDetailVC()
+//        let productDetailVC = ProductDetailVC()
+        let swiftUIDetailVC = ProductDetailView(viewModel: productDescriptionVM)
         
         if let navigationController = navigationController {
-            navigationController.pushViewController(productDetailVC, animated: true)
+            navigationController.pushViewController(UIHostingController(rootView: swiftUIDetailVC), animated: true)
         }
         
     }

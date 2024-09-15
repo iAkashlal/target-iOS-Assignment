@@ -19,6 +19,7 @@ final class AppFlowStarter {
     
     static let shared = AppFlowStarter()
     
+    @MainActor 
     func setup(
         path: FlowPath,
         with rootCoordinator: inout Coordinator?,
