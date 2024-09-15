@@ -13,6 +13,8 @@ final class DealsVM {
     var coordinator: Coordinator?
     var service: (any NetworkServiceable)?
     
+    private var products: [Product] = []
+    
     init(coordinator: Coordinator?, service: (any NetworkServiceable) = DealsService()) {
         self.coordinator = coordinator
         self.service = service
@@ -37,8 +39,14 @@ final class DealsVM {
         
         Task {
             do {
-                let deals = try await service.fetch(request: request)
+                guard let (deals, response) = try await service.fetch(request: request) as? (DealsResponse, URLResponse) else {
+                    Logger.sharedInstance.log(message: "Failed to obtain deals object", logLevel: .error)
+                    return
+                }
                 Logger.sharedInstance.log(key: UUID().uuidString, message: "Deals loaded", logLevel: .info)
+                
+                self.products = deals.products
+                
             } catch let error {
                 Logger.sharedInstance.log(
                     key: UUID().uuidString,
@@ -49,7 +57,28 @@ final class DealsVM {
             }
         }
         
-        
     }
     
+    
+}
+
+// MARK: - Helper functions for UICollectionView
+extension DealsVM {
+    
+    func numberOfProducts() -> Int {
+        return self.products.count
+    }
+    
+    func getProduct(at index: Int) -> Product? {
+        guard index <= products.count else {
+            Logger.sharedInstance.log(message: "DealsVC trying to display more items than it has")
+            return nil
+        }
+        
+        return products[index]
+    }
+    
+    func getPageTitle() -> String {
+        return "List"
+    }
 }
