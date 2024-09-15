@@ -11,7 +11,7 @@ import SDWebImageSwiftUI
 
 struct ProductDetailView: View {
     
-    @StateObject var viewModel: ProductDetailVM
+    @StateObject var viewModel: ProductDetailVM = ProductDetailVM(coordinator: nil, product: Product.mockProduct())
     
     var body: some View {
             ZStack {
@@ -43,7 +43,6 @@ struct ProductDetailView: View {
                 }
                 FloatingCTAView()
             }
-//            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text("Detail")
@@ -170,17 +169,9 @@ struct ProductDescriptionView: View {
         }
         .padding(.horizontal, 16)
         .padding(.bottom, 10)
-        .overlay(
-                VStack {
-                    Spacer()
-                    Rectangle()
-                        .frame(height: 1)
-                        .foregroundColor(UIColor.thinBorderGray.asColor())
-                }
-            )
     }
 }
 
-//#Preview {
-//    ProductDetailView(product: Product.mockProduct())
-//}
+#Preview {
+    ProductDetailView()
+}
