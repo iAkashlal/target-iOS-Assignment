@@ -8,19 +8,25 @@
 
 import Foundation
 
-final class ProductDetailVM {
+@MainActor
+final class ProductDetailVM: ObservableObject {
     
     var coordinator: Coordinator?
     var service: (any NetworkServiceable)?
     
-    private(set) var product: Product?
+    @Published private(set) var product: Product
     
-    init(coordinator: Coordinator?, service: (any NetworkServiceable) = ProductDetailService()) {
+    init(coordinator: Coordinator?, service: (any NetworkServiceable) = ProductDetailService(), product: Product) {
         self.coordinator = coordinator
         self.service = service
+        self.product = product
     }
     
-    func fetchDescriptionforProduct(with id: Int) {
+    func fetchDescriptionforProduct(with product: Product?) {
+        if let product = product {
+            self.product = product
+        }
+        
         guard let service else {
             Logger.sharedInstance.log(
                 message: "Service not initialized [\(#file.components(separatedBy: "/").last ?? "") - Line \(#line)]",
@@ -29,7 +35,7 @@ final class ProductDetailVM {
             return
         }
         
-        guard let request = TargetAPI.productDetail(id: id).request else {
+        guard let request = TargetAPI.productDetail(id: self.product.id).request else {
             Logger.sharedInstance.log(
                 message: "URLRequest not available [\(#file.components(separatedBy: "/").last ?? "") - Line \(#line)]",
                 logLevel: .error
@@ -39,8 +45,14 @@ final class ProductDetailVM {
         
         Task {
             do {
-                let product = try await service.fetch(request: request)
-                Logger.sharedInstance.log(key: UUID().uuidString, message: "Product \(id) loaded", logLevel: .info)
+                guard let (product, response) = try await service.fetch(request: request) as? (Product, URLResponse) else {
+                    Logger.sharedInstance.log(message: "Unable to find avail product, response")
+                    return
+                }
+                Logger.sharedInstance.log(key: UUID().uuidString, message: "Product \(product.id) loaded", logLevel: .info)
+                
+                self.product = product
+                
             } catch let error {
                 Logger.sharedInstance.log(
                     key: UUID().uuidString,
