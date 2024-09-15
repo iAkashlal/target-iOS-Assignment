@@ -40,6 +40,8 @@
 		F857CC4B2C972DC800BAB8C1 /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC4A2C972DC800BAB8C1 /* ProductDetailView.swift */; };
 		F857CC4E2C97301F00BAB8C1 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = F857CC4D2C97301F00BAB8C1 /* SDWebImageSwiftUI */; };
 		F857CC502C976B0400BAB8C1 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC4F2C976B0400BAB8C1 /* View+.swift */; };
+		F857CC532C9776F000BAB8C1 /* SF-Pro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F857CC522C9776F000BAB8C1 /* SF-Pro.ttf */; };
+		F857CC552C9778A600BAB8C1 /* DealsVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC542C9778A600BAB8C1 /* DealsVMTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,8 @@
 		F857CC482C971B4800BAB8C1 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		F857CC4A2C972DC800BAB8C1 /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
 		F857CC4F2C976B0400BAB8C1 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		F857CC522C9776F000BAB8C1 /* SF-Pro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro.ttf"; sourceTree = "<group>"; };
+		F857CC542C9778A600BAB8C1 /* DealsVMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsVMTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				9636D41927FF77E700FE8106 /* ProductViewerTests.swift */,
+				F857CC542C9778A600BAB8C1 /* DealsVMTests.swift */,
 			);
 			path = ProductViewerTests;
 			sourceTree = "<group>";
@@ -172,6 +177,7 @@
 		96D6F5F4280EE0B2009338BF /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				F857CC512C9774D700BAB8C1 /* Resources */,
 				F857CC1D2C95AD6000BAB8C1 /* Extensions */,
 				F857CC1C2C95AD5800BAB8C1 /* Protocols */,
 				F857CC152C95AB5F00BAB8C1 /* Assets */,
@@ -277,6 +283,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		F857CC512C9774D700BAB8C1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F857CC522C9776F000BAB8C1 /* SF-Pro.ttf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -369,6 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F857CC442C970D9C00BAB8C1 /* ProductItemCVC.xib in Resources */,
+				F857CC532C9776F000BAB8C1 /* SF-Pro.ttf in Resources */,
 				5B259CD41D6630E0001D755F /* LaunchScreen.storyboard in Resources */,
 				5B259CD11D6630E0001D755F /* Assets.xcassets in Resources */,
 			);
@@ -422,6 +437,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F857CC552C9778A600BAB8C1 /* DealsVMTests.swift in Sources */,
 				9636D41A27FF77E700FE8106 /* ProductViewerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -19,3 +19,7 @@ struct Price: Codable {
         case displayString = "display_string"
     }
 }
+
+extension Price: Equatable {
+    
+}
