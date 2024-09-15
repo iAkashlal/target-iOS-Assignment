@@ -24,6 +24,7 @@ struct Product: Codable {
     let fulfillment: String
     let availability: String
     let stockInfo: StockInfo
+    let isDiscounted: Bool
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -57,5 +58,13 @@ struct Product: Codable {
         } else {
             stockInfo = .soldOut
         }
+        
+        if let salePrice = salePrice {
+            isDiscounted = true
+        } else {
+            isDiscounted = false
+        }
     }
+    
+    
 }

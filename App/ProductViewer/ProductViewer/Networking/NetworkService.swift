@@ -19,7 +19,7 @@ class NetworkService<T: Decodable>: NetworkServiceable {
     let decoder = JSONDecoder()
     
     init() {
-        self.decoder.keyDecodingStrategy = .convertFromSnakeCase
+//        self.decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
     
     func fetch(request: URLRequest) async throws -> (T, URLResponse) {

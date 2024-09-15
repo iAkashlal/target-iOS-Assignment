@@ -6,12 +6,12 @@ import UIKit
 
 final class StandaloneListViewController: UIViewController {
     
-    var vm: DealsVM!
+    var viewModel: DealsVM?
     
     private lazy var layout: UICollectionViewLayout = {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .estimated(40)
+            heightDimension: .estimated(220)
         )
         
         let item = NSCollectionLayoutItem(
@@ -27,7 +27,7 @@ final class StandaloneListViewController: UIViewController {
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .estimated(40)
+            heightDimension: .estimated(220)
         )
         
         let group = NSCollectionLayoutGroup.horizontal(
@@ -64,14 +64,20 @@ final class StandaloneListViewController: UIViewController {
             forCellWithReuseIdentifier: StandaloneListItemViewCell.reuseIdentifier
         )
         
+        let nib = UINib(nibName: ProductItemCVC.reuseIdentifier, bundle: nil)
+        collectionView.register(
+            nib,
+            forCellWithReuseIdentifier: ProductItemCVC.reuseIdentifier
+        )
+                
         return collectionView
     }()
     
-    private var sections: [ListSection] = [] {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
+//    private var sections: [ListSection] = [] {
+//        didSet {
+//            collectionView.reloadData()
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,23 +91,27 @@ final class StandaloneListViewController: UIViewController {
             right: 0.0
         )
         
-        title = "checkout"
+        title = viewModel?.getPageTitle() ?? "List"
         
         view.addAndPinSubview(collectionView)
         
-        sections = [
-            ListSection(
-                index: 1,
-                items: (1..<10).map { index in
-                    ListItem(
-                        title: "Puppies!!!",
-                        price: "$9.99",
-                        image: UIImage(named: "\(index)"),
-                        index: index
-                    )
-                }
-            ),
-        ]
+//        sections = [
+//            ListSection(
+//                index: 1,
+//                items: (1..<10).map { index in
+//                    ListItem(
+//                        title: "Puppies!!!",
+//                        price: "$9.99",
+//                        image: UIImage(named: "\(index)"),
+//                        index: index
+//                    )
+//                }
+//            ),
+//        ]
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.collectionView.reloadData()
+        }
     }
 }
 
@@ -110,24 +120,25 @@ extension StandaloneListViewController: UICollectionViewDelegate {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
-        guard
-            sections.indices.contains(indexPath.section),
-            sections[indexPath.section].items.indices.contains(indexPath.row)
-        else {
-            return
-        }
-        
-        let productListItem = sections[indexPath.section].items[indexPath.row]
-        
-        let alert = UIAlertController(
-            title: "Item \(productListItem.index) selected!",
-            message: "🐶",
-            preferredStyle: .alert
-        )
-        
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil) )
-        
-        present(alert, animated: true, completion: nil)
+        self.viewModel?.showDetailsForProduct(at: indexPath.row)
+//        guard
+//            sections.indices.contains(indexPath.section),
+//            sections[indexPath.section].items.indices.contains(indexPath.row)
+//        else {
+//            return
+//        }
+//        
+//        let productListItem = sections[indexPath.section].items[indexPath.row]
+//        
+//        let alert = UIAlertController(
+//            title: "Item \(productListItem.index) selected!",
+//            message: "🐶",
+//            preferredStyle: .alert
+//        )
+//        
+//        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil) )
+//        
+//        present(alert, animated: true, completion: nil)
     }
 }
 
@@ -136,13 +147,14 @@ extension StandaloneListViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        guard
-            sections.indices.contains(section)
-        else {
-            return 0
-        }
+//        guard
+//            sections.indices.contains(section)
+//        else {
+//            return 0
+//        }
         
-        return sections[section].items.count
+//        return sections[section].items.count
+        return viewModel?.numberOfProducts() ?? 0
     }
     
     func collectionView(
@@ -150,19 +162,23 @@ extension StandaloneListViewController: UICollectionViewDataSource {
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         guard
-            sections.indices.contains(indexPath.section),
-            sections[indexPath.section].items.indices.contains(indexPath.row),
+            let product = viewModel?.getProduct(at: indexPath.row),
+//            sections.indices.contains(indexPath.section),
+//            sections[indexPath.section].items.indices.contains(indexPath.row),
             let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: StandaloneListItemViewCell.reuseIdentifier,
+                withReuseIdentifier: ProductItemCVC.reuseIdentifier,
                 for: indexPath
-            ) as? StandaloneListItemViewCell
+            ) as? ProductItemCVC
         else {
             return UICollectionViewCell()
         }
         
-        let listItem = sections[indexPath.section].items[indexPath.row]
+//        let listItem = sections[indexPath.section].items[indexPath.row]
         
-        cell.listItemView.configure(for: listItem)
+//        cell.listItemView.configure(for: listItem)
+        if let viewModel = viewModel, let product = viewModel.getProduct(at: indexPath.row) {
+            cell.configureFor(product: product)
+        }
         
         return cell
     }

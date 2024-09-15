@@ -12,4 +12,10 @@ struct Price: Codable {
     let amountInCents: Int
     let currencySymbol: String
     let displayString: String
+    
+    enum CodingKeys: String, CodingKey {
+        case amountInCents = "amount_in_cents"
+        case currencySymbol = "currency_symbol"
+        case displayString = "display_string"
+    }
 }

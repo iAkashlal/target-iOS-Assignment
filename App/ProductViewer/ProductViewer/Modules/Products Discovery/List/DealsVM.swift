@@ -82,3 +82,14 @@ extension DealsVM {
         return "List"
     }
 }
+
+extension DealsVM {
+    func showDetailsForProduct(at index: Int) {
+        let product = getProduct(at: index)
+        guard let product = getProduct(at: index),
+              let coordinator = self.coordinator as? ProductsDiscoveryCoordinator else{
+            return
+        }
+        coordinator.showDetails(for: product)
+    }
+}

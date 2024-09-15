@@ -25,6 +25,7 @@ class ProductsDiscoveryCoordinator: Coordinator {
         dealsVM.fetchAllDeals()
         
         let productsListView = StandaloneListViewController()
+        productsListView.viewModel = dealsVM
         
         if let navigationController = navigationController {
             navigationController.setViewControllers(
@@ -35,9 +36,9 @@ class ProductsDiscoveryCoordinator: Coordinator {
         
     }
     
-    func showProduct(with id: Int) {
+    func showDetails(for product: Product) {
         let productDescriptionVM = ProductDetailVM(coordinator: self)
-        productDescriptionVM.fetchDescriptionforProduct(with: id)
+        productDescriptionVM.fetchDescriptionforProduct(with: product.id)
         
         let productDetailVC = ProductDetailVC()
         
