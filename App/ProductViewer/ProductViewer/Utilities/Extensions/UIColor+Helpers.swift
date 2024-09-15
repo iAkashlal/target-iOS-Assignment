@@ -6,11 +6,12 @@ import UIKit
 extension UIColor {
     static let grayDarkest = UIColor(hex: 0x333333)
     static let grayMedium = UIColor(hex: 0x888888)
-    static let targetRed = UIColor(hex: 0xCC0000)
+    static let targetRed = UIColor(hex: 0xAA0000)
     static let targetTextGreen = UIColor(hex: 0x008300)
     static let textLightGray = UIColor(hex: 0x666666)
     static let thinBorderGray = UIColor(hex: 0xD6D6D6)
     static let background = UIColor(hex: 0xF7F7F7)
+    static let black = UIColor(hex: 0x000000)
 }
 
 extension UIColor {
