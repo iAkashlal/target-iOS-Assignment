@@ -121,6 +121,7 @@ extension StandaloneListViewController: UICollectionViewDelegate {
         didSelectItemAt indexPath: IndexPath
     ) {
         self.viewModel?.showDetailsForProduct(at: indexPath.row)
+        self.collectionView.deselectItem(at: indexPath, animated: true)
 //        guard
 //            sections.indices.contains(indexPath.section),
 //            sections[indexPath.section].items.indices.contains(indexPath.row)
