@@ -2,16 +2,18 @@
 //  Copyright © 2022 Target. All rights reserved.
 //
 
+import Combine
 import UIKit
 
 final class StandaloneListViewController: UIViewController {
     
     var viewModel: DealsVM?
+    var subscribers: Set<AnyCancellable> = []
     
     private lazy var layout: UICollectionViewLayout = {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .estimated(220)
+            heightDimension: .estimated(100)
         )
         
         let item = NSCollectionLayoutItem(
@@ -27,7 +29,7 @@ final class StandaloneListViewController: UIViewController {
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .estimated(220)
+            heightDimension: .estimated(100)
         )
         
         let group = NSCollectionLayoutGroup.horizontal(
@@ -79,11 +81,42 @@ final class StandaloneListViewController: UIViewController {
 //        }
 //    }
     
+    let activityIndicator: UIActivityIndicatorView = {
+            let indicator = UIActivityIndicatorView(style: .large)
+            indicator.color = .gray
+            indicator.hidesWhenStopped = true
+            indicator.translatesAutoresizingMaskIntoConstraints = false
+            return indicator
+        }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(collectionView)
+        title = viewModel?.getPageTitle() ?? "List"
 
+        setupCollectionView()
+        
+        setupIndicatorView()
+    }
+    
+    func setupCollectionView() {
+        
+        //        sections = [
+        //            ListSection(
+        //                index: 1,
+        //                items: (1..<10).map { index in
+        //                    ListItem(
+        //                        title: "Puppies!!!",
+        //                        price: "$9.99",
+        //                        image: UIImage(named: "\(index)"),
+        //                        index: index
+        //                    )
+        //                }
+        //            ),
+        //        ]
+        
+        view.addSubview(collectionView)
+        
         collectionView.contentInset = UIEdgeInsets(
             top: 20.0,
             left: 0.0,
@@ -91,27 +124,29 @@ final class StandaloneListViewController: UIViewController {
             right: 0.0
         )
         
-        title = viewModel?.getPageTitle() ?? "List"
-        
         view.addAndPinSubview(collectionView)
         
-//        sections = [
-//            ListSection(
-//                index: 1,
-//                items: (1..<10).map { index in
-//                    ListItem(
-//                        title: "Puppies!!!",
-//                        price: "$9.99",
-//                        image: UIImage(named: "\(index)"),
-//                        index: index
-//                    )
-//                }
-//            ),
-//        ]
+        viewModel?
+            .$products
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] _ in
+                if !(self?.viewModel?.products.isEmpty ?? true) {
+                    self?.activityIndicator.stopAnimating()
+                }
+                self?.collectionView.reloadData()
+            })
+            .store(in: &subscribers)
+    }
+    
+    func setupIndicatorView() {
+        view.addSubview(activityIndicator)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.collectionView.reloadData()
-        }
+        activityIndicator.startAnimating()
+        
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
 }
 

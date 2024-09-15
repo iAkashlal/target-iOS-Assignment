@@ -6,14 +6,16 @@
 //  Copyright © 2024 Target. All rights reserved.
 //
 
+import Combine
 import Foundation
 
-final class DealsVM {
+final class DealsVM: ObservableObject {
     
     var coordinator: Coordinator?
     var service: (any NetworkServiceable)?
     
-    private var products: [Product] = []
+    @Published
+    private(set) var products: [Product] = []
     
     init(coordinator: Coordinator?, service: (any NetworkServiceable) = DealsService()) {
         self.coordinator = coordinator
