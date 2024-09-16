@@ -15,6 +15,7 @@ final class ProductDetailVM: ObservableObject {
     var service: NetworkService<Product>?
     
     @Published private(set) var product: Product
+    @Published private(set) var isLoading: Bool = true
     
     init(coordinator: Coordinator?, service: NetworkService<Product> = ProductDetailService(), product: Product) {
         self.coordinator = coordinator
@@ -49,7 +50,7 @@ final class ProductDetailVM: ObservableObject {
                 Logger.sharedInstance.log(key: UUID().uuidString, message: "Product \(product.id) loaded", logLevel: .info)
                 
                 self.product = product
-                
+                self.isLoading = false
             } catch let error {
                 Logger.sharedInstance.log(
                     key: UUID().uuidString,
