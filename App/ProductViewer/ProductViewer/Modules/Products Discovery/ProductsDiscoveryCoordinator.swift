@@ -42,7 +42,6 @@ class ProductsDiscoveryCoordinator: Coordinator {
         let productDescriptionVM = ProductDetailVM(coordinator: self, product: product)
         productDescriptionVM.fetchDescriptionforProduct(with: product)
         
-//        let productDetailVC = ProductDetailVC()
         let swiftUIDetailVC = ProductDetailView(viewModel: productDescriptionVM)
         
         if let navigationController = navigationController {

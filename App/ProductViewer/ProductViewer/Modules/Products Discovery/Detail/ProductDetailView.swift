@@ -15,6 +15,7 @@ struct ProductDetailView: View {
     
     var body: some View {
             ZStack {
+                
                 ScrollView {
                     VStack {
                         ProductCardView(product: viewModel.product)
@@ -41,6 +42,14 @@ struct ProductDetailView: View {
                             .frame(height: 75)
                     }
                 }
+                
+                if viewModel.isLoading {
+                    ProgressView("Loading...")
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .background(Color.white.opacity(0.8))
+                        .cornerRadius(10)
+                }
+                
                 FloatingCTAView()
             }
             .toolbar {
@@ -49,102 +58,6 @@ struct ProductDetailView: View {
                         .font(.headline)
                 }
             }
-    }
-}
-
-struct ProductCardView: View {
-    
-    var product: Product
-    
-    var body: some View {
-        VStack {
-            WebImage(url: product.imageUrl?.asURL())
-                .resizable()
-                .scaledToFit()
-                .frame(
-                    width: UIScreen.main.bounds.width - 32,
-                    height: UIScreen.main.bounds.width - 32)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .padding(.top, 16)
-            
-            HStack {
-                Text(product.title)
-                    .foregroundColor(UIColor.darkestBlack.asColor())
-                    .fontWeight(.semibold)
-                    .font(.title2)
-                    .padding(.top, 28)
-                Spacer()
-            }
-            
-            HStack {
-                if product.isDiscounted {
-                    Text(product.salePrice?.displayString ?? "$NaN")
-                        .foregroundColor(UIColor.targetRed.asColor())
-                        .font(.title3)
-                        .fontWeight(.bold)
-                        .multilineTextAlignment(.leading)
-                        .foregroundColor(.red)
-                    
-                    Text("reg. \(product.regularPrice?.displayString ?? "$NaN")")
-                        .foregroundColor(UIColor.grayDarkest.asColor())
-                        .font(.footnote)
-                        .multilineTextAlignment(.leading)
-                        .foregroundColor(.gray)
-                } else {
-                    Text(product.regularPrice?.displayString ?? "$NaN")
-                        .foregroundColor(UIColor.targetRed.asColor())
-                        .font(.title3)
-                        .fontWeight(.bold)
-                        .multilineTextAlignment(.leading)
-                }
-                Spacer()
-            }
-            .padding(.top, 11)
-            
-            HStack {
-                Text(product.fulfillment)
-                    .foregroundColor(UIColor.textLightGray.asColor())
-                    .font(.footnote)
-                    .padding(.top, 2)
-                Spacer()
-            }
-            
-        }
-        .padding(.horizontal, 16)
-    }
-}
-
-struct FloatingCTAView: View {
-    var body: some View {
-        VStack {
-            GeometryReader { geometry in
-                VStack {
-                    Spacer()
-                    
-                    VStack {
-                        Button(action: {
-                            // Action for add to cart
-                        }) {
-                            Text("Add to cart")
-                                .foregroundColor(.white)
-                                .font(.headline)
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .background(UIColor.targetRed.asColor())
-                                .cornerRadius(8)
-                        }
-                        .padding(.horizontal, 16)
-                        .padding(.bottom, 30)
-                        .padding(.top, 16)
-                    }
-                    .frame(width: geometry.size.width)
-                    .background(Color.white)
-                    .cornerRadius(8, corners: [.topLeft, .topRight])
-                    .shadow(radius: 10)
-                }
-            }
-        }
-        .edgesIgnoringSafeArea(.bottom)
     }
 }
 
