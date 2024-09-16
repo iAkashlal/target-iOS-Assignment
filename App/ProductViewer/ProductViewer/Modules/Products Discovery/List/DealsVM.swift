@@ -17,7 +17,7 @@ final class DealsVM: ObservableObject {
     @Published
     private(set) var products: [Product] = []
     
-    init(coordinator: Coordinator?, service: NetworkService<DealsResponse> = DealsService()) {
+    init(coordinator: Coordinator?, service: NetworkService<DealsResponse>? = DealsService()) {
         self.coordinator = coordinator
         self.service = service
     }
