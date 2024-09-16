@@ -12,12 +12,12 @@ import Foundation
 final class DealsVM: ObservableObject {
     
     var coordinator: Coordinator?
-    var service: (any NetworkServiceable)?
+    var service: NetworkService<DealsResponse>?
     
     @Published
     private(set) var products: [Product] = []
     
-    init(coordinator: Coordinator?, service: (any NetworkServiceable) = DealsService()) {
+    init(coordinator: Coordinator?, service: NetworkService<DealsResponse> = DealsService()) {
         self.coordinator = coordinator
         self.service = service
     }
@@ -41,10 +41,7 @@ final class DealsVM: ObservableObject {
         
         Task {
             do {
-                guard let (deals, response) = try await service.fetch(request: request) as? (DealsResponse, URLResponse) else {
-                    Logger.sharedInstance.log(message: "Failed to obtain deals object", logLevel: .error)
-                    return
-                }
+                let (deals, response) = try await service.fetch(request: request)
                 Logger.sharedInstance.log(key: UUID().uuidString, message: "Deals loaded", logLevel: .info)
                 
                 self.products = deals.products
@@ -72,7 +69,7 @@ extension DealsVM {
     }
     
     func getProduct(at index: Int) -> Product? {
-        guard index <= products.count else {
+        guard index < products.count else {
             Logger.sharedInstance.log(message: "DealsVC trying to display more items than it has")
             return nil
         }

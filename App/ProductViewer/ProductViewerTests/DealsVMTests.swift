@@ -12,7 +12,7 @@ import Combine
 @testable import ProductViewer
 
 // MARK: - Mock Classes
-final class MockNetworkServiceable: NetworkServiceable {
+final class MockNetworkServiceable: NetworkService<DealsResponse> {
     var dealsResponse: DealsResponse?
     var error: Error?
 
@@ -75,6 +75,39 @@ final class DealsVMTests: XCTestCase {
         viewModel.fetchAllDeals()
         
         wait(for: [expectation], timeout: 1)
+    }
+    
+    @MainActor 
+    func test_showProductDetailsCalled_CoordinatorCalledSuccessfully() {
+        let sampleProducts = [Product].init(repeating: Product.mockProduct(), count: 2)
+        mockService.dealsResponse = DealsResponse(products: sampleProducts)
+        
+        let expectation = XCTestExpectation(description: "Products should be fetched in 1 second")
+        
+        viewModel
+            .$products
+            .dropFirst()
+            .sink { products in
+                XCTAssertEqual(products.count, sampleProducts.count)
+                
+                Task { @MainActor in
+                    self.viewModel.showDetailsForProduct(at: 0)
+                    guard let coordinator = self.viewModel.coordinator as? MockCoordinator else {
+                        XCTFail("Coordinator not mocked")
+                        return
+                    }
+                    XCTAssertTrue(coordinator.showDetailsCalled)
+                    XCTAssertEqual(coordinator.productPassed, self.viewModel.getProduct(at: 0))
+                    expectation.fulfill()
+                    
+                }
+            }
+            .store(in: &cancellables)
+        
+        viewModel.fetchAllDeals()        
+        
+        wait(for: [expectation], timeout: 1)
+
     }
     
     
