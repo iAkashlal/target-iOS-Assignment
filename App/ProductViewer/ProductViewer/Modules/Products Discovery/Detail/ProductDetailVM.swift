@@ -12,11 +12,11 @@ import Foundation
 final class ProductDetailVM: ObservableObject {
     
     var coordinator: Coordinator?
-    var service: (any NetworkServiceable)?
+    var service: NetworkService<Product>?
     
     @Published private(set) var product: Product
     
-    init(coordinator: Coordinator?, service: (any NetworkServiceable) = ProductDetailService(), product: Product) {
+    init(coordinator: Coordinator?, service: NetworkService<Product> = ProductDetailService(), product: Product) {
         self.coordinator = coordinator
         self.service = service
         self.product = product
@@ -45,10 +45,7 @@ final class ProductDetailVM: ObservableObject {
         
         Task {
             do {
-                guard let (product, response) = try await service.fetch(request: request) as? (Product, URLResponse) else {
-                    Logger.sharedInstance.log(message: "Unable to find avail product, response")
-                    return
-                }
+                let (product, response) = try await service.fetch(request: request)
                 Logger.sharedInstance.log(key: UUID().uuidString, message: "Product \(product.id) loaded", logLevel: .info)
                 
                 self.product = product

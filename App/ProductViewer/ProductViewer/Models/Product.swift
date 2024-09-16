@@ -95,3 +95,21 @@ struct Product: Codable {
     
     
 }
+
+extension Product: Equatable {
+    static func == (lhs: Product, rhs: Product) -> Bool {
+        return lhs.id == rhs.id &&
+                       lhs.title == rhs.title &&
+                       lhs.aisle == rhs.aisle &&
+                       lhs.description == rhs.description &&
+                       lhs.imageUrl == rhs.imageUrl &&
+                       lhs.regularPrice == rhs.regularPrice &&
+                       lhs.salePrice == rhs.salePrice &&
+                       lhs.fulfillment == rhs.fulfillment &&
+                       lhs.availability == rhs.availability &&
+                       lhs.stockInfo == rhs.stockInfo &&
+                       lhs.isDiscounted == rhs.isDiscounted
+    }
+    
+    
+}
