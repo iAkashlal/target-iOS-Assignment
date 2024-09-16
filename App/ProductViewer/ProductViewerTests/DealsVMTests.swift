@@ -12,11 +12,11 @@ import Combine
 @testable import ProductViewer
 
 // MARK: - Mock Classes
-final class MockNetworkServiceable: NetworkService<DealsResponse> {
+final class MockDealsNetworkService: NetworkService<DealsResponse> {
     var dealsResponse: DealsResponse?
     var error: Error?
 
-    func fetch(request: URLRequest) async throws -> (Any, URLResponse) {
+    override func fetch(request: URLRequest) async throws -> (DealsResponse, URLResponse) {
         if let error = error {
             throw error
         }
@@ -37,13 +37,13 @@ final class MockCoordinator: ProductsDiscoveryCoordinator {
 // MARK: - Tests
 final class DealsVMTests: XCTestCase {
     var viewModel: DealsVM!
-    var mockService: MockNetworkServiceable!
+    var mockService: MockDealsNetworkService!
     var mockCoordinator: MockCoordinator!
     var cancellables: Set<AnyCancellable> = []
     
     @MainActor
     override func setUpWithError() throws {
-        mockService = MockNetworkServiceable()
+        mockService = MockDealsNetworkService()
         mockCoordinator = MockCoordinator()
         viewModel = DealsVM(coordinator: mockCoordinator, service: mockService)
         cancellables = []
@@ -58,7 +58,7 @@ final class DealsVMTests: XCTestCase {
     }
     
     func test_fetchAllDeals_Success() {
-        let sampleProducts = [Product].init(repeating: Product.mockProduct(), count: 20)
+        let sampleProducts = [Product].init(repeating: Product.mockProduct(), count: 2)
         mockService.dealsResponse = DealsResponse(products: sampleProducts)
         
         let expectation = XCTestExpectation(description: "Products should be fetched in 1 second")
@@ -67,48 +67,47 @@ final class DealsVMTests: XCTestCase {
             .$products
             .dropFirst()
             .sink { products in
-                XCTAssertEqual(products.count, sampleProducts.count)
+                XCTAssertEqual(products, sampleProducts)
                 expectation.fulfill()
             }
             .store(in: &cancellables)
         
         viewModel.fetchAllDeals()
         
-        wait(for: [expectation], timeout: 4)
-    }
-    
-    @MainActor 
-    func test_showProductDetailsCalled_CoordinatorCalledSuccessfully() {
-        let sampleProducts = [Product].init(repeating: Product.mockProduct(), count: 20)
-        mockService.dealsResponse = DealsResponse(products: sampleProducts)
-        
-        let expectation = XCTestExpectation(description: "Products should be fetched in 1 second")
-        
-        viewModel
-            .$products
-            .dropFirst()
-            .sink { products in
-                XCTAssertEqual(products.count, sampleProducts.count)
-                
-                Task { @MainActor in
-                    self.viewModel.showDetailsForProduct(at: 0)
-                    guard let coordinator = self.viewModel.coordinator as? MockCoordinator else {
-                        XCTFail("Coordinator not mocked")
-                        return
-                    }
-                    XCTAssertTrue(coordinator.showDetailsCalled)
-                    XCTAssertEqual(coordinator.productPassed, self.viewModel.getProduct(at: 0))
-                    expectation.fulfill()
-                    
-                }
-            }
-            .store(in: &cancellables)
-        
-        viewModel.fetchAllDeals()        
         
         wait(for: [expectation], timeout: 1)
-
     }
     
-    
+    @MainActor
+        func test_showProductDetailsCalled_CoordinatorCalledSuccessfully() {
+            let sampleProducts = [Product].init(repeating: Product.mockProduct(), count: 2)
+            mockService.dealsResponse = DealsResponse(products: sampleProducts)
+            
+            let expectation = XCTestExpectation(description: "Products should be fetched in 1 second")
+            
+            viewModel
+                .$products
+                .dropFirst()
+                .sink { products in
+                    XCTAssertEqual(products.count, sampleProducts.count)
+                    
+                    Task { @MainActor in
+                        self.viewModel.showDetailsForProduct(at: 0)
+                        guard let coordinator = self.viewModel.coordinator as? MockCoordinator else {
+                            XCTFail("Coordinator not mocked")
+                            return
+                        }
+                        XCTAssertTrue(coordinator.showDetailsCalled)
+                        XCTAssertEqual(coordinator.productPassed, self.viewModel.getProduct(at: 0))
+                        expectation.fulfill()
+                        
+                    }
+                }
+                .store(in: &cancellables)
+            
+            viewModel.fetchAllDeals()
+            
+            wait(for: [expectation], timeout: 1)
+
+        }
 }
