@@ -17,9 +17,13 @@ final class DealsVM: ObservableObject {
     @Published
     private(set) var products: [Product] = []
     
-    init(coordinator: Coordinator?, service: NetworkService<DealsResponse> = DealsService()) {
+    init(coordinator: Coordinator?, service: NetworkService<DealsResponse>? = nil) {
         self.coordinator = coordinator
-        self.service = service
+        if let service = service {
+            self.service = service
+        } else {
+            self.service = DealsService()
+        }
     }
     
     func fetchAllDeals() {

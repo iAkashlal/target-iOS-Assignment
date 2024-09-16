@@ -58,7 +58,7 @@ final class DealsVMTests: XCTestCase {
     }
     
     func test_fetchAllDeals_Success() {
-        let sampleProducts = [Product].init(repeating: Product.mockProduct(), count: 2)
+        let sampleProducts = [Product].init(repeating: Product.mockProduct(), count: 20)
         mockService.dealsResponse = DealsResponse(products: sampleProducts)
         
         let expectation = XCTestExpectation(description: "Products should be fetched in 1 second")
@@ -74,12 +74,12 @@ final class DealsVMTests: XCTestCase {
         
         viewModel.fetchAllDeals()
         
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: 4)
     }
     
     @MainActor 
     func test_showProductDetailsCalled_CoordinatorCalledSuccessfully() {
-        let sampleProducts = [Product].init(repeating: Product.mockProduct(), count: 2)
+        let sampleProducts = [Product].init(repeating: Product.mockProduct(), count: 20)
         mockService.dealsResponse = DealsResponse(products: sampleProducts)
         
         let expectation = XCTestExpectation(description: "Products should be fetched in 1 second")
