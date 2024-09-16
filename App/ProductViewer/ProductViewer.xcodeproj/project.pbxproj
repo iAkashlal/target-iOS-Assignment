@@ -10,8 +10,6 @@
 		5B259CCA1D6630E0001D755F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B259CC91D6630E0001D755F /* AppDelegate.swift */; };
 		5B259CD11D6630E0001D755F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B259CD01D6630E0001D755F /* Assets.xcassets */; };
 		5B259CD41D6630E0001D755F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B259CD21D6630E0001D755F /* LaunchScreen.storyboard */; };
-		5BEF08141D663304006BF0C0 /* StandaloneListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEF08131D663304006BF0C0 /* StandaloneListViewController.swift */; };
-		5BEF081F1D663598006BF0C0 /* StandaloneListItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEF081E1D663598006BF0C0 /* StandaloneListItemViewCell.swift */; };
 		9636D41A27FF77E700FE8106 /* ProductViewerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9636D41927FF77E700FE8106 /* ProductViewerTests.swift */; };
 		96D6F5F6280EE0C0009338BF /* Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D6F5F5280EE0C0009338BF /* Autolayout.swift */; };
 		96D6F5FD280F47B0009338BF /* UIColor+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D6F5FB280F47B0009338BF /* UIColor+Helpers.swift */; };
@@ -33,8 +31,6 @@
 		F857CC392C95C52100BAB8C1 /* DealsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC382C95C52100BAB8C1 /* DealsVM.swift */; };
 		F857CC3D2C960C7400BAB8C1 /* ProductDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC3C2C960C7400BAB8C1 /* ProductDetailVM.swift */; };
 		F857CC3F2C96103B00BAB8C1 /* ProductDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC3E2C96103B00BAB8C1 /* ProductDetailService.swift */; };
-		F857CC432C970D9C00BAB8C1 /* ProductItemCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC412C970D9C00BAB8C1 /* ProductItemCVC.swift */; };
-		F857CC442C970D9C00BAB8C1 /* ProductItemCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F857CC422C970D9C00BAB8C1 /* ProductItemCVC.xib */; };
 		F857CC472C9717E800BAB8C1 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = F857CC462C9717E800BAB8C1 /* SDWebImage */; };
 		F857CC492C971B4800BAB8C1 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC482C971B4800BAB8C1 /* String+.swift */; };
 		F857CC4B2C972DC800BAB8C1 /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC4A2C972DC800BAB8C1 /* ProductDetailView.swift */; };
@@ -42,6 +38,10 @@
 		F857CC502C976B0400BAB8C1 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC4F2C976B0400BAB8C1 /* View+.swift */; };
 		F857CC532C9776F000BAB8C1 /* SF-Pro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F857CC522C9776F000BAB8C1 /* SF-Pro.ttf */; };
 		F857CC552C9778A600BAB8C1 /* DealsVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC542C9778A600BAB8C1 /* DealsVMTests.swift */; };
+		F857CC582C980B2E00BAB8C1 /* DealsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC562C980B2E00BAB8C1 /* DealsVC.swift */; };
+		F857CC592C980B2E00BAB8C1 /* DealsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F857CC572C980B2E00BAB8C1 /* DealsVC.xib */; };
+		F857CC5C2C98129000BAB8C1 /* ProductItemTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857CC5A2C98129000BAB8C1 /* ProductItemTVC.swift */; };
+		F857CC5D2C98129000BAB8C1 /* ProductItemTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F857CC5B2C98129000BAB8C1 /* ProductItemTVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,8 +60,6 @@
 		5B259CD01D6630E0001D755F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B259CD31D6630E0001D755F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B259CD51D6630E0001D755F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5BEF08131D663304006BF0C0 /* StandaloneListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandaloneListViewController.swift; sourceTree = "<group>"; };
-		5BEF081E1D663598006BF0C0 /* StandaloneListItemViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandaloneListItemViewCell.swift; sourceTree = "<group>"; };
 		9636D41727FF77E700FE8106 /* ProductViewerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProductViewerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9636D41927FF77E700FE8106 /* ProductViewerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewerTests.swift; sourceTree = "<group>"; };
 		96D6F5F5280EE0C0009338BF /* Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autolayout.swift; sourceTree = "<group>"; };
@@ -84,13 +82,15 @@
 		F857CC382C95C52100BAB8C1 /* DealsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsVM.swift; sourceTree = "<group>"; };
 		F857CC3C2C960C7400BAB8C1 /* ProductDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailVM.swift; sourceTree = "<group>"; };
 		F857CC3E2C96103B00BAB8C1 /* ProductDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailService.swift; sourceTree = "<group>"; };
-		F857CC412C970D9C00BAB8C1 /* ProductItemCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemCVC.swift; sourceTree = "<group>"; };
-		F857CC422C970D9C00BAB8C1 /* ProductItemCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductItemCVC.xib; sourceTree = "<group>"; };
 		F857CC482C971B4800BAB8C1 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		F857CC4A2C972DC800BAB8C1 /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
 		F857CC4F2C976B0400BAB8C1 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		F857CC522C9776F000BAB8C1 /* SF-Pro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro.ttf"; sourceTree = "<group>"; };
 		F857CC542C9778A600BAB8C1 /* DealsVMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsVMTests.swift; sourceTree = "<group>"; };
+		F857CC562C980B2E00BAB8C1 /* DealsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsVC.swift; sourceTree = "<group>"; };
+		F857CC572C980B2E00BAB8C1 /* DealsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DealsVC.xib; sourceTree = "<group>"; };
+		F857CC5A2C98129000BAB8C1 /* ProductItemTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemTVC.swift; sourceTree = "<group>"; };
+		F857CC5B2C98129000BAB8C1 /* ProductItemTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductItemTVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,9 +149,10 @@
 			isa = PBXGroup;
 			children = (
 				F857CC402C970D7400BAB8C1 /* Components */,
-				965B6A6A283F57DC0080E9B4 /* Standalone */,
 				96F0032927BC262C00D1818F /* DataSource.swift */,
 				F857CC382C95C52100BAB8C1 /* DealsVM.swift */,
+				F857CC562C980B2E00BAB8C1 /* DealsVC.swift */,
+				F857CC572C980B2E00BAB8C1 /* DealsVC.xib */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -163,15 +164,6 @@
 				F857CC542C9778A600BAB8C1 /* DealsVMTests.swift */,
 			);
 			path = ProductViewerTests;
-			sourceTree = "<group>";
-		};
-		965B6A6A283F57DC0080E9B4 /* Standalone */ = {
-			isa = PBXGroup;
-			children = (
-				5BEF08131D663304006BF0C0 /* StandaloneListViewController.swift */,
-				5BEF081E1D663598006BF0C0 /* StandaloneListItemViewCell.swift */,
-			);
-			path = Standalone;
 			sourceTree = "<group>";
 		};
 		96D6F5F4280EE0B2009338BF /* Utilities */ = {
@@ -277,8 +269,8 @@
 		F857CC402C970D7400BAB8C1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				F857CC412C970D9C00BAB8C1 /* ProductItemCVC.swift */,
-				F857CC422C970D9C00BAB8C1 /* ProductItemCVC.xib */,
+				F857CC5A2C98129000BAB8C1 /* ProductItemTVC.swift */,
+				F857CC5B2C98129000BAB8C1 /* ProductItemTVC.xib */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -382,9 +374,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F857CC442C970D9C00BAB8C1 /* ProductItemCVC.xib in Resources */,
+				F857CC592C980B2E00BAB8C1 /* DealsVC.xib in Resources */,
 				F857CC532C9776F000BAB8C1 /* SF-Pro.ttf in Resources */,
 				5B259CD41D6630E0001D755F /* LaunchScreen.storyboard in Resources */,
+				F857CC5D2C98129000BAB8C1 /* ProductItemTVC.xib in Resources */,
 				5B259CD11D6630E0001D755F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,11 +401,11 @@
 				F857CC292C95B82A00BAB8C1 /* NetworkRequest.swift in Sources */,
 				F857CC332C95C4D900BAB8C1 /* Product.swift in Sources */,
 				F857CC502C976B0400BAB8C1 /* View+.swift in Sources */,
+				F857CC5C2C98129000BAB8C1 /* ProductItemTVC.swift in Sources */,
 				5B259CCA1D6630E0001D755F /* AppDelegate.swift in Sources */,
 				96D6F5FD280F47B0009338BF /* UIColor+Helpers.swift in Sources */,
 				F857CC3F2C96103B00BAB8C1 /* ProductDetailService.swift in Sources */,
 				96D6F5F6280EE0C0009338BF /* Autolayout.swift in Sources */,
-				5BEF081F1D663598006BF0C0 /* StandaloneListItemViewCell.swift in Sources */,
 				96F0032A27BC262C00D1818F /* DataSource.swift in Sources */,
 				F857CC3D2C960C7400BAB8C1 /* ProductDetailVM.swift in Sources */,
 				F857CC392C95C52100BAB8C1 /* DealsVM.swift in Sources */,
@@ -421,11 +414,10 @@
 				F857CC2B2C95B86400BAB8C1 /* NetworkService.swift in Sources */,
 				F857CC1A2C95AC8700BAB8C1 /* AppFlowStarter.swift in Sources */,
 				96D6F5FE280F47B0009338BF /* UIFont+Helpers.swift in Sources */,
+				F857CC582C980B2E00BAB8C1 /* DealsVC.swift in Sources */,
 				F857CC272C95B7F400BAB8C1 /* Logger.swift in Sources */,
 				F857CC252C95B39400BAB8C1 /* ProductDetailVC.swift in Sources */,
-				5BEF08141D663304006BF0C0 /* StandaloneListViewController.swift in Sources */,
 				F857CC4B2C972DC800BAB8C1 /* ProductDetailView.swift in Sources */,
-				F857CC432C970D9C00BAB8C1 /* ProductItemCVC.swift in Sources */,
 				F857CC372C95C50100BAB8C1 /* ItemNotFoundResponse.swift in Sources */,
 				F857CC202C95AD8B00BAB8C1 /* Coordinator.swift in Sources */,
 				F857CC222C95B09A00BAB8C1 /* ProductsDiscoveryCoordinator.swift in Sources */,

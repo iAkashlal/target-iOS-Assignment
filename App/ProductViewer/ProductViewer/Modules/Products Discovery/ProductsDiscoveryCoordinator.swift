@@ -26,7 +26,7 @@ class ProductsDiscoveryCoordinator: Coordinator {
         let dealsVM = DealsVM(coordinator: self)
         dealsVM.fetchAllDeals()
         
-        let productsListView = StandaloneListViewController()
+        let productsListView = DealsVC()
         productsListView.viewModel = dealsVM
         
         if let navigationController = navigationController {

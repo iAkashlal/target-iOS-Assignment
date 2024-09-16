@@ -1,18 +1,17 @@
 //
-//  ProductItemCVC.swift
+//  ProductItemTVC.swift
 //  ProductViewer
 //
-//  Created by Akashlal Bathe on 15/09/24.
+//  Created by Akashlal Bathe on 16/09/24.
 //  Copyright © 2024 Target. All rights reserved.
 //
 
-import SDWebImage
 import UIKit
 
-class ProductItemCVC: UICollectionViewCell {
-    
-    static let reuseIdentifier = "ProductItemCVC"
+class ProductItemTVC: UITableViewCell {
 
+    static let reuseIdentifier = "ProductItemTVC"
+    
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var itemPriceLabel: UILabel!
     @IBOutlet weak var strikeoffPriceLabel: UILabel!
@@ -21,7 +20,7 @@ class ProductItemCVC: UICollectionViewCell {
     
     @IBOutlet weak var stockIndicatorLabel: UILabel!
     @IBOutlet weak var aisleLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         setupDesign()
@@ -173,4 +172,8 @@ class ProductItemCVC: UICollectionViewCell {
         aisleLabel.text = ""
     }
 
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
+    
 }
