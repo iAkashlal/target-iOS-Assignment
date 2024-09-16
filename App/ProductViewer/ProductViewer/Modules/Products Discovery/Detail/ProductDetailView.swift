@@ -11,7 +11,7 @@ import SDWebImageSwiftUI
 
 struct ProductDetailView: View {
     
-    @StateObject var viewModel: ProductDetailVM = ProductDetailVM(coordinator: nil, product: Product.mockProduct())
+    @StateObject var viewModel: ProductDetailVM
     
     var body: some View {
         ZStack {
@@ -63,5 +63,5 @@ struct ProductDetailView: View {
 
 
 #Preview {
-    ProductDetailView()
+    ProductDetailView(viewModel: ProductDetailVM(coordinator: nil, product: Product.mockProduct()))
 }
